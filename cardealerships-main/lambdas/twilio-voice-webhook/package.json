@@ -1,7 +1,0 @@
-{
-  "name": "twilio-voice-webhook",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Lambda to handle Twilio voice webhooks and return TwiML",
-  "main": "index.js"
-}

@@ -3,13 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { createClient } from "@/lib/supabaseClient";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
   {
-    name: "Overview",
+    name: "Dashboard",
     href: "/dashboard",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -18,7 +16,7 @@ const navItems = [
     ),
   },
   {
-    name: "Calls",
+    name: "Call Log",
     href: "/calls",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -36,12 +34,21 @@ const navItems = [
     ),
   },
   {
-    name: "Setup",
-    href: "/setup",
+    name: "Hotels",
+    href: "/hotels",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+  },
+  {
+    name: "Demo Mode",
+    href: "/demo-mode",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
   },
@@ -49,14 +56,7 @@ const navItems = [
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/");
-  };
 
   return (
     <div className="min-h-screen flex relative">
@@ -119,24 +119,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </button>
         )}
 
-        {/* Search */}
-        {!isCollapsed && (
-          <div className="px-3 py-3">
-            <div className="flex items-center gap-2 px-3 py-2 bg-white/[0.05] rounded-lg border border-white/[0.08]">
-              <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <span className="text-sm text-white/40">Search...</span>
-              <div className="ml-auto flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 text-[10px] text-white/30 bg-white/[0.08] rounded">⌘</kbd>
-                <kbd className="px-1.5 py-0.5 text-[10px] text-white/30 bg-white/[0.08] rounded">K</kbd>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Navigation */}
-        <nav className="flex-1 px-3 py-2 space-y-0.5">
+        <nav className="flex-1 px-3 py-4 space-y-0.5">
           {navItems.map((item) => {
             const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
             return (
@@ -157,44 +141,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
-
-        {/* Bottom section */}
-        <div className={`px-3 pb-3 ${isCollapsed ? "hidden" : ""}`}>
-          {/* Status */}
-          <div className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.06] mb-3">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span className="text-xs text-white/60">Remaining memory</span>
-              </div>
-              <span className="text-xs font-medium text-emerald-400">High</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <svg className="w-3.5 h-3.5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                <span className="text-xs text-white/60">Last locked by</span>
-              </div>
-              <span className="text-xs text-white/80 bg-white/[0.08] px-2 py-0.5 rounded">Internal system</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Sign out */}
-        <div className="p-3 border-t border-white/[0.08]">
-          <button
-            onClick={handleSignOut}
-            className={`flex items-center gap-3 px-3 py-2 w-full text-white/60 hover:bg-white/[0.04] hover:text-white/80 rounded-lg transition-all duration-200 ${
-              isCollapsed ? "justify-center" : ""
-            }`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            {!isCollapsed && <span className="text-[13px] font-medium">Sign Out</span>}
-          </button>
-        </div>
       </aside>
 
       {/* Main content */}

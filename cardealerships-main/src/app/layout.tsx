@@ -2,8 +2,6 @@ import type React from "react"
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { ConditionalHeader } from "@/components/conditional-header";
-import { ScrollToTop } from "@/components/scroll-to-top";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -23,8 +21,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Lance - AI Voice Agents for Car Dealerships",
-  description: "AI-powered voice agents for car dealership reception, service, and sales",
+  title: "Lance Hotels",
+  description: "AI-powered voice agents for hotels",
 };
 
 export default function RootLayout({
@@ -35,8 +33,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistMono.variable} ${inter.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
-        <ScrollToTop />
-        <ConditionalHeader />
         {children}
       </body>
     </html>
