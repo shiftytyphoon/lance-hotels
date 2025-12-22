@@ -1,0 +1,14 @@
+{
+  "name": "lance-session-server",
+  "version": "1.0.0",
+  "description": "WebSocket session server for Twilio Media Streams",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  }
+}
