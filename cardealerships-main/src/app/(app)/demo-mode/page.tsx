@@ -3,6 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import Vapi from "@vapi-ai/web";
+import { WebSocketLatencyTest } from "./components/WebSocketLatencyTest";
+import { StubModeDemo } from "./components/StubModeDemo";
+import LiveVoiceTest from "./components/LiveVoiceTest";
 
 interface Hotel {
   id: string;
@@ -151,7 +154,16 @@ export default function DemoModePage() {
   const isVapiConfigured = VAPI_PUBLIC_KEY !== "your-vapi-public-key" && VAPI_ASSISTANT_ID !== "your-assistant-id";
 
   return (
-    <div className="h-screen p-6 flex flex-col gap-6">
+    <div className="h-screen p-6 flex flex-col gap-6 overflow-y-auto">
+      {/* Live Voice Test with Deepgram (DEV ONLY) */}
+      <LiveVoiceTest />
+
+      {/* WebSocket Latency Test (DEV ONLY) */}
+      <WebSocketLatencyTest />
+
+      {/* Stub Mode Demo (DEV ONLY) */}
+      <StubModeDemo />
+
       {/* Top Header Bar */}
       <div className="flex items-center justify-between">
         <div>

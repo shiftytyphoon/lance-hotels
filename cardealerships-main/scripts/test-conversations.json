@@ -1,0 +1,131 @@
+[
+  {
+    "id": "booking_happy_path",
+    "description": "Happy path - simple room booking",
+    "turns": [
+      "Hello, I need a room for tonight",
+      "Yes, I'd like a room with two beds",
+      "What time is check-in?",
+      "Perfect, I'll book it. Thank you!"
+    ]
+  },
+  {
+    "id": "amenities_inquiry",
+    "description": "Guest asking about hotel facilities",
+    "turns": [
+      "Hi there",
+      "What amenities do you have?",
+      "Is the pool heated?",
+      "What about parking?",
+      "Great, thanks for the info"
+    ]
+  },
+  {
+    "id": "frustrated_complaint",
+    "description": "Frustrated guest with room issue",
+    "turns": [
+      "I have a problem with my room",
+      "The air conditioning isn't working and it's too hot",
+      "This is unacceptable, I've been waiting for 30 minutes",
+      "I want to speak to a manager"
+    ]
+  },
+  {
+    "id": "pricing_inquiry",
+    "description": "Price-sensitive guest comparison shopping",
+    "turns": [
+      "How much is a standard room?",
+      "What about a suite?",
+      "Do you have any discounts or promotions?",
+      "Is breakfast included?",
+      "Let me think about it"
+    ]
+  },
+  {
+    "id": "modification_request",
+    "description": "Guest modifying existing reservation",
+    "turns": [
+      "I need to change my reservation",
+      "I want to extend my stay by two nights",
+      "What room types are available?",
+      "Yes, please change it to a king bed",
+      "Perfect, thank you"
+    ]
+  },
+  {
+    "id": "confused_guest",
+    "description": "Confused guest with unclear requests",
+    "turns": [
+      "Um, hi, I'm not sure if...",
+      "Do you have rooms available? Or maybe I should...",
+      "What's the difference between your room types?",
+      "I see, but which one has better... you know...",
+      "Okay, I think I understand now"
+    ]
+  },
+  {
+    "id": "urgent_booking",
+    "description": "Urgent last-minute booking",
+    "turns": [
+      "I need a room ASAP, my flight just got cancelled",
+      "Any room is fine, I just need somewhere to sleep tonight",
+      "How quickly can I check in?",
+      "Great, I'm on my way right now"
+    ]
+  },
+  {
+    "id": "local_recommendations",
+    "description": "Guest asking for local area recommendations",
+    "turns": [
+      "Hi, I'm staying with you this weekend",
+      "What are some good restaurants nearby?",
+      "What about things to do in the area?",
+      "Are there any good hiking trails?",
+      "Awesome, thanks for the suggestions!"
+    ]
+  },
+  {
+    "id": "billing_question",
+    "description": "Guest with billing inquiry",
+    "turns": [
+      "I have a question about my bill",
+      "There's a charge I don't recognize",
+      "Can you explain the resort fee?",
+      "I see. Can I get an itemized invoice?",
+      "Thank you for clarifying"
+    ]
+  },
+  {
+    "id": "cancellation",
+    "description": "Guest cancelling reservation",
+    "turns": [
+      "I need to cancel my reservation",
+      "It's for next weekend, under Smith",
+      "Will I get a full refund?",
+      "Yes, please cancel it",
+      "Okay, thank you"
+    ]
+  },
+  {
+    "id": "special_requests",
+    "description": "Guest with special accommodation requests",
+    "turns": [
+      "I'd like to book a room with some special requests",
+      "I need a ground floor room for accessibility",
+      "Also, I'm allergic to down pillows",
+      "Can you arrange early check-in?",
+      "Perfect, I really appreciate your help"
+    ]
+  },
+  {
+    "id": "group_booking",
+    "description": "Group booking for event",
+    "turns": [
+      "I need to book rooms for a wedding party",
+      "About 20 rooms for three nights in June",
+      "Do you offer group rates?",
+      "What's included in the wedding package?",
+      "Let me discuss with the bride and get back to you"
+    ]
+  }
+]
