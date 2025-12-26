@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test:voice": "tsx --env-file=../.env.local scripts/test-voice-pipeline.ts",
     "test:batch": "tsx --env-file=../.env.local scripts/batch-test.ts",
-    "verify:keys": "node scripts/verify-api-keys.mjs"
+    "verify:keys": "node --env-file=../.env.local scripts/verify-api-keys.mjs"
   },
   "dependencies": {
     "@cartesia/cartesia-js": "^2.2.9",

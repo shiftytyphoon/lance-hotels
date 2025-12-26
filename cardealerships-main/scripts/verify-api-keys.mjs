@@ -43,8 +43,8 @@ async function testDeepgram() {
     const { createClient } = await import('@deepgram/sdk');
     const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
 
-    // Simple balance check (doesn't consume credits)
-    const { result, error } = await deepgram.manage.getBalances();
+    // List projects to verify API key
+    const { result, error } = await deepgram.manage.getProjects();
 
     if (error) {
       throw new Error(error.message);
@@ -64,8 +64,8 @@ async function testDeepgram() {
 
 async function testCartesia() {
   try {
-    const { Cartesia } = await import('@cartesia/cartesia-js');
-    const cartesia = new Cartesia({ apiKey: process.env.CARTESIA_API_KEY });
+    const { CartesiaClient } = await import('@cartesia/cartesia-js');
+    const cartesia = new CartesiaClient({ apiKey: process.env.CARTESIA_API_KEY });
 
     // List voices to verify API key
     const voices = await cartesia.voices.list();
